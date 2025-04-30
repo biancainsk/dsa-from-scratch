@@ -2,11 +2,14 @@
 
 int main()
 {
+    // --- ARRAY OF INTS ---
+    std::cout << "--- ARRAY OF INTS ---" << std::endl;
     DynamicArray<int> arr;
     arr.print();
 
     arr.push(10);
-    std::cout << arr.get(0) << std::endl;
+    int& x = arr.get(0);
+    std::cout << x << std::endl;
     arr.print();
 
     arr.push(20);
@@ -34,8 +37,25 @@ int main()
     arr.pop();
     arr.print();
 
-    arr.pop();
-    arr.print();
+    // --- ARRAY OF POINTERS ---
+    std::cout << "--- ARRAY OF POINTERS ---" << std::endl;
+    DynamicArray<int*> arrPtr;
+
+    for(int i = 0; i < 10; i++)
+    {
+        int* ptrVal = new int(i * 10);
+        arrPtr.push(ptrVal);
+    }
+
+    arrPtr.print();
+
+    arrPtr.del(1);
+    arrPtr.print();
+
+    std::cout << arrPtr.get(5) << std::endl;
+    auto& y = arrPtr.get(5);
+    y = 12;
+    arrPtr.print();
 
     return 0;
 }

@@ -58,16 +58,6 @@ void DynamicArray<T>::shrink()
 }
 
 template <typename T>
-const T& DynamicArray<T>::get(int index) const
-{
-    if(isValid(index))
-    {
-        return arr[index];
-    }
-    throw std::out_of_range("Index " + std::to_string(index) + " out of bounds");
-}
-
-template <typename T>
 void DynamicArray<T>::push(const T& data)
 {
     if(count == size)
@@ -155,7 +145,21 @@ void DynamicArray<T>::print() const
 {
     for(int i = 0; i < count; i++)
     {
-        std::cout << arr[i] << " ";  // Output: 1 2 3 4
+        if constexpr(std::is_pointer<T>::value)
+        {
+            if(arr[i])
+            {
+                std::cout << *arr[i] << " ";
+            }
+            else
+            {
+                std::cout << "nullptr ";
+            }
+        }
+        else
+        {
+            std::cout << arr[i] << " ";
+        }
     }
     std::cout << std::endl;
 }
