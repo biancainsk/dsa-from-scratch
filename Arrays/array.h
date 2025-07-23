@@ -114,20 +114,33 @@ private:
     /**
      * @brief Internal array
      */
-    T* arr;
+    T* m_arr;
 
     /**
      * @brief Total capacity of the array
      */
-    int size;
+    int m_size;
 
     /**
      * @brief Number of actual elements
      */
-    int count;
+    int m_count;
 
+    /**
+     * @brief Check if a specific index is valid
+     * @param index Index to check
+     * @return true if the index is valid, false otherwise 
+     */
     bool isValid(int index) const;
+
+    /**
+     * @brief Double the total size of the array
+     */
     void resize();
+
+    /**
+     * @brief Halve the size of the array
+     */
     void shrink();
 };
 
