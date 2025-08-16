@@ -6,13 +6,13 @@ int main()
     std::cout << "--- ARRAY OF INTS ---" << std::endl;
     DynamicArray<int> arr;
 
-    arr.push(10);
+    arr.pushBack(10);
     arr.print();
 
-    arr.push(20);
+    arr.pushBack(20);
     arr.print();
 
-    arr.push(30);
+    arr.pushBack(30);
     arr.print();
 
     arr.insert(40, 2);
@@ -21,11 +21,12 @@ int main()
     std::cout << "At index 3 value is " << arr[3] << std::endl;
 
     // .begin() and .end() allows us to use range-based for-loops like this:
-    for(auto val : arr)
-    {
-        std::cout << val << " ";
-    }
-    std::cout << std::endl;
+    // for(auto val : arr)
+    // {
+    //     std::cout << val << " ";
+    //     // val++;
+    // }
+    // std::cout << std::endl;
 
     arr.pop();
     arr.print();
@@ -52,7 +53,7 @@ int main()
     for(int i = 0; i < 10; i++)
     {
         int* ptrVal = new int(i * 10);
-        arrPtr.push(ptrVal);
+        arrPtr.pushBack(ptrVal);
     }
 
     arrPtr.print();
